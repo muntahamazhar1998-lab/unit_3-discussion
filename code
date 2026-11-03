@@ -1,0 +1,85 @@
+Unit 3 discussion
+
+print("\n=== INSERTION TESTS ===")
+
+# Create a list of courses
+courses = ["CMSC 315", "CMSC 350", "MATH 115"]
+print("Original courses:", courses)
+
+# Insert a course at the beginning
+insert_at(courses, 0, "CMIS 141")
+print("Beginning:", courses)
+
+# Insert a course in the middle
+insert_at(courses, len(courses) // 2, "STAT 200")
+print("Middle:", courses)
+
+# Insert a course at the end
+insert_at(courses, len(courses), "IFSM 300")
+print("End:", courses)
+
+
+print("\n=== DELETION TESTS ===")
+
+# Delete from the beginning
+removed = delete_at(courses, 0)
+print(f"Beginning: removed {removed}; remaining: {courses}")
+
+# Delete from the middle
+removed = delete_at(courses, len(courses) // 2)
+print(f"Middle: removed {removed}; remaining: {courses}")
+
+# Delete from the end
+removed = delete_at(courses, len(courses) - 1)
+print(f"End: removed {removed}; remaining: {courses}")
+
+
+print("\n=== SEARCH TESTS ===")
+
+search_courses = ["CMSC 315", "CMSC 350", "MATH 115"]
+
+# Search for an existing course
+print(f"Search 'CMSC 350': index {search_value(search_courses, 'CMSC 350')}")
+
+# Search for a course that does not exist
+print(f"Search 'BIOL 101': index {search_value(search_courses, 'BIOL 101')}")
+
+
+print("\n=== EDGE CASES ===")
+
+empty = []
+
+# Delete from an empty list
+print("Delete from empty:", delete_at(empty, 0))
+
+# Search in an empty list
+print("Search empty:", search_value(empty, "CMSC 315"))
+
+# Insert into an empty list
+insert_at(empty, 0, "CMSC 315")
+print("Insert into empty:", empty)
+
+# Invalid indexes
+print("Negative index rejected:", delete_at(empty, -1), empty)
+print("Index equal to length rejected:", delete_at(empty, len(empty)), empty)
+
+# Delete the only item
+print("Delete only item:", delete_at(empty, 0), empty)
+
+
+print("\n=== STUDENT COURSE SCENARIO ===")
+
+# Real-world example: managing a student's course schedule
+schedule = ["CMSC 315", "CMSC 350", "MATH 115"]
+
+# Add a new course
+insert_at(schedule, 0, "CMIS 141")
+print("Added a new course:", schedule)
+
+# Find and remove a course
+index = search_value(schedule, "CMSC 350")
+
+if index != -1:
+    print("Dropped course:", delete_at(schedule, index))
+
+print("Updated schedule:", schedule)
